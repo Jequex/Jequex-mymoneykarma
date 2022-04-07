@@ -2,8 +2,7 @@ const client = require('../../redis');
 
 exports.outBoundSms = async (req, res, next) => {
     const { from, to } = req.body;
-
-    console.log('here1');
+    
     try {
         const data = await client.get(`${from}${to}`);
         if (data) {
@@ -19,7 +18,7 @@ exports.checkCount = async (req, res, next) => {
     const { from } = req.body;
     try {
         const data = await client.get(`${from}`);
-        const ttl = await client.get(`${from}`);
+        const ttl = await client.ttl(`${from}`);
         if (data) {
             let count = JSON.parse(data);
             if (count >= 50) {
@@ -29,7 +28,7 @@ exports.checkCount = async (req, res, next) => {
                 next();
             }
         } else {
-                req.count = {count: 0, ttl: 0};
+            req.count = { count: 0, ttl: 0 };
             next();
         }
     } catch (e) {

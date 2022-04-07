@@ -11,7 +11,7 @@ describe('POST inbound', () => {
             const response = await request(app)
                 .post('/api/v1/inbound/sms')
                 .send(data).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
                 });
             expect(JSON.parse(response.text).error).toBe('from is invalid')
         }
@@ -20,7 +20,7 @@ describe('POST inbound', () => {
         const response = await request(app)
             .post('/api/v1/inbound/sms')
             .send({ to: '1234567', text: 'jnvjd' }).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
             });
             expect(JSON.parse(response.text).error).toBe('from is missing')
     })
@@ -28,7 +28,7 @@ describe('POST inbound', () => {
         const response = await request(app)
             .post('/api/v1/inbound/sms')
             .send({ from: '309329847348', text: 'jnvjd' }).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
             });
             expect(JSON.parse(response.text).error).toBe('to parameter not found')
     })
@@ -36,7 +36,7 @@ describe('POST inbound', () => {
         const response = await request(app)
             .post('/api/v1/inbound/sms')
             .send({ from: '309329847348', to: '329847348', text: 'jnvjd' }).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
             });
             expect(JSON.parse(response.text).error).toBe('to parameter not found')
     })
@@ -44,7 +44,7 @@ describe('POST inbound', () => {
         const response = await request(app)
             .post('/api/v1/inbound/sms')
             .send({ to: '4924195509198', from: '309329847348' }).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
             });
             expect(JSON.parse(response.text).error).toBe('unknown failure')
     })
@@ -52,7 +52,7 @@ describe('POST inbound', () => {
         const response = await request(app)
             .post('/api/v1/inbound/sms')
             .send({ to: '4924195509198', from: '309329847348', text: 'jnvjd'  }).set({
-                token: "{\"id\":1,\"auth_id\":\"20S0KPNOIM\",\"username\":\"azr1\",\"token\":\"token\"}"
+                token: "1"
             });
             expect(JSON.parse(response.text).message).toBe('inbound sms ok')
     })

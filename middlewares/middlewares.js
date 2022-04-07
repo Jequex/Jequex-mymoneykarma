@@ -11,7 +11,7 @@ exports.auth = async (req, res, next) => {
     if (!token) {
         return res.status(403).send({ message: 'unauthorized' });
     } else {
-        req.user = JSON.parse(token);
+        req.user = token;
         next();
     }
 }

@@ -6,7 +6,7 @@ const query = promisify(dbClient.query).bind(dbClient);
 
 exports.inboundSms = async (req, res) => {
     const { from, to, text } = req.body;
-    const { id } = req.user;
+    const id = req.user;
 
     try {
         const checkTo = await query(`SELECT * FROM phone_number
@@ -22,10 +22,11 @@ exports.inboundSms = async (req, res) => {
         } else if (!text || text.length < 1 || text.length > 120) {
             return res.send({ message: '', error: 'unknown failure' });
         } else if (text.includes('STOP')) {
-            redisClient.setEx(`${from}${to}`, 14400, JSON.stringify({message: '', error: `sms from ${from} to ${to} blocked by STOP request`}))
+            redisClient.setEx(`${from}${to}`, 14400, JSON.stringify(
+                { message: '', error: `sms from ${from} to ${to} blocked by STOP request` }
+            ))
             return res.send({ message: '', error: 'unknown failure' });
         } else {
-            redisClient.setEx(`${from}`, 86400, JSON.stringify({number: 0}))
             return res.send({ message: 'inbound sms ok', error: '' });
         }
     } catch (e) {
