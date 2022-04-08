@@ -5,14 +5,8 @@ require('dotenv').config();
 
 
 dbClient.connect();
-dbClient.on('connect', () => {
-    console.log("database connection successful");
-})
 
 redisClient.connect();
-redisClient.on('connect', () => {
-    console.log("redis connection successful");
-})
 
 const app = express();
 

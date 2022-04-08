@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "app": "nodemon app.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "clearCache": "node clearCachedData"
   },
   "keywords": [],
   "author": "",
