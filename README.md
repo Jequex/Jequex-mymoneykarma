@@ -14,10 +14,11 @@
 - clone repo
 - you can run the following commands:
 - 'npm install' to install dependencies
+- You will need to create an .env file inside the main directory using the .env.example pattern
 - 'npm run clearCache' to clear cached data
 - 'npm test' to run all tests
-- 'npm run server' to run the server
 - 'npm run joke' to see a funny joke
+- 'npm run server' to run the server
 </p>
 
 <h3 align="left">Connect with me:</h3>
