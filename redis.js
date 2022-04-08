@@ -1,10 +1,10 @@
 const redis = require('redis');
 require('dotenv').config();
 
-const { REDIS_STRING } = process.env;
+const { REDIS_TLS_URL } = process.env;
 
 const client = redis.createClient({
-    url: REDIS_STRING,
+    url: REDIS_TLS_URL,
     socket: {
         tls: true,
         rejectUnauthorized: false

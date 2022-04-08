@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "app": "nodemon app.js",
+    "start": "nodemon server.js",
     "server": "nodemon server.js",
     "clearCache": "node clearCachedData",
     "joke": "node joke"
