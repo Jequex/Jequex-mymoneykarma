@@ -12,9 +12,9 @@
 <h3 align="left">Instructions for setup:</h3>
 <p align="left">
 - clone repo
+- You will need to create an .env file inside the main directory using the .env.example pattern
 - you can run the following commands:
 - 'npm install' to install dependencies
-- You will need to create an .env file inside the main directory using the .env.example pattern
 - 'npm run clearCache' to clear cached data
 - 'npm test' to run all tests
 - 'npm run joke' to see a funny joke
